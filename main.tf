@@ -3,11 +3,15 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.52.0"
-      }
     }
-
   }
+  backend "azurerm" {
+    resource_group_name   = "TFState-RG"
+    storage_account_name  = "staeustfstate"
+    container_name        = "tfstate"
+    key                   = "0rySrzcL/Tpwss7p/tT2xN/FZi/tmLrtdtD2B+CkrIQ6jwO462di2krjnLHpn+43L7jxiUpSHs3/+AStjF1X7g=="
+    }
+}
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
@@ -36,9 +40,3 @@ resource "azurerm_subnet" "mysubnet" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
-backend "azurerm" {
-    resource_group_name   = "TFState-RG"
-    storage_account_name  = "staeustfstate"
-    container_name        = "tfstate"
-    key                   = "0rySrzcL/Tpwss7p/tT2xN/FZi/tmLrtdtD2B+CkrIQ6jwO462di2krjnLHpn+43L7jxiUpSHs3/+AStjF1X7g=="
-}
