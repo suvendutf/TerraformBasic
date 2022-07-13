@@ -13,6 +13,12 @@ terraform {
 provider "azurerm" {
   features {}
 }
+backend "azurerm" {
+    resource_group_name   = "TFState-RG"
+    storage_account_name  = "staeustfstate"
+    container_name        = "tfstate"
+    key                   = "0rySrzcL/Tpwss7p/tT2xN/FZi/tmLrtdtD2B+CkrIQ6jwO462di2krjnLHpn+43L7jxiUpSHs3/+AStjF1X7g=="
+}
 
 # Create a resource group
 resource "azurerm_resource_group" "myrg" {
